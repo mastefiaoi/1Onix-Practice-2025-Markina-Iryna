@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Exodus Crypto Wallet</title>
+	<style>
+		/* Base Styles - Body and general elements */
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background-color: #000;
+			color: #fff;
+		}
+
+		/* Navbar Styles - Navigation bar and its components */
+		.navbar {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			background: rgba(0, 0, 0, .7);
+			padding: 15px 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			z-index: 1000;
+		}
+
+		.container {
+			width: 90%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.logo img {
+			height: 40px;
+			width: auto;
+		}
+
+		.logo-text {
+			font-size: 24px;
+			font-weight: bold;
+			color: #fff;
+		}
+
+		.nav-links {
+			list-style: none;
+			display: flex;
+		}
+
+		.nav-links li {
+			margin: 0 15px;
+		}
+
+		.nav-links a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 16px;
+		}
+
+		.download-btn {
+			background: #ff5e5e;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		/* Hero Section - Main banner with background image */
+		.hero {
+			background: url("https://s3-alpha-sig.figma.com/img/2f8c/e283/b17dba3ccd3c505ada156564ce4ba63d?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=T7qJHD7sQ8uBRj6qLBzkJ9wOknSYa2uHOVejylFPzE5LGbXNpofEzffed9g6NI4WCSjh9v58zhZZvpuC4nmiB~t2jo84l7KDPd-m88MVTyjqSSyBgabYOU76RUB9g6SkSwgi4TL8h5StZf8brGLjAc7NaIuTf46TAODD0a2F7d3bAGFt6eJKhU1lVhyn307jyFALwQAhdIdGSxs02KVJg0ef90G1HlYyOaooHavFaiGCjLYBgqH0Tkf29jSORAHnTg4xE5TEHLVVQ6bI-Qjp5J8xnI4pxQSandQFXQYRutbcqbBiQrsCPjMfBymSpURLDuiZhBIsUYNrBzgwx5taTA__") no-repeat center center/cover;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: left;
+			text-align: left;
+			padding: 0 10%;
+		}
+
+		.hero h1 {
+			font-size: 48px;
+			margin-bottom: 20px;
+		}
+
+		.hero p {
+			font-size: 18px;
+			max-width: 600px;
+		}
+
+		/* Why Choose Section - Statistics and features grid */
+		.why-choose {
+			text-align: center;
+			padding: 80px 5%;
+			background: url("https://s3-alpha-sig.figma.com/img/5cf5/6294/e5cbe3e2e1337e0dc010f8f1d7f77b70?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=hrpTV~jFWD1QAWmrJYN9FO0T52eflQgPfcL5rV1ZN9jyTYjutRQRqS-XSObM3wIqkaoB6tJMKB2dlfZdTaGhJCUPETYGT1NihwdnAF3MyV0BunV6xT-~jWmFOx8TIdaHdybWiEDqIHTuTPMo~CAfAXrWBYdy1adJp0bg7ns-~GzCCbNQYEPiO4BryprdKieqMnoHpLw3ZLr6nkUtQtBKG26efuPNkbhs0sRfVlSNbaOO2y-V2j55wxTHafOx6bCej2D0T1XCmXKnhzxeXrtM1xiWhV5~Ff4hp4qpBbTX2WGvi4b9t5RcKlTi78JIa9CejS4MnsdRgKlNyPb7z70GXw__") no-repeat center center/cover;
+		}
+
+		.why-choose h2 {
+			font-size: 36px;
+			margin-bottom: 40px;
+		}
+
+		.info-container {
+			display: flex;
+			justify-content: center;
+			margin-top: 30px;
+		}
+
+		.info-box {
+			background: #fff;
+			padding: 30px 50px 30px 50px;
+			width: 410px;
+			text-align: center;
+			position: relative;
+
+		}
+
+		.info-box h3 {
+			font-size: 42px;
+			background: linear-gradient(135deg, #FF9966, #FF5E5E);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			margin: 0 0 15px 0;
+			font-weight: 800;
+		}
+
+		.info-box .subtitle {
+			font-size: 18px;
+			color: #000;
+			font-weight: 800;
+			margin-bottom: 15px;
+			display: block;
+		}
+
+		.info-box .description {
+			font-size: 14px;
+			color: #666;
+			line-height: 1.5;
+			margin: 0;
+		}
+
+		/* Footer Styles */
+		footer {
+			background: #fff;
+			padding: 50px 10%;
+			text-align: center;
+			color: #000;
+		}
+
+		.footer-content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 30px;
+		}
+
+		.footer-logo {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 20px;
+		}
+
+		.footer-logo img {
+			height: 40px;
+			width: auto;
+		}
+
+		.footer-logo-text {
+			font-size: 24px;
+			font-weight: bold;
+			color: #000;
+		}
+
+		.footer-columns {
+			display: flex;
+			gap: 40px;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+
+		.column {
+			width: 150px;
+			text-align: left;
+		}
+
+		.column h4 {
+			margin-bottom: 15px;
+			font-size: 18px;
+			color: #000;
+		}
+
+		.column ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.column ul li {
+			margin: 5px 0;
+		}
+
+		.column ul li a {
+			color: #666;
+			text-decoration: none;
+			font-size: 14px;
+		}
+
+		.column ul li a:hover {
+			color: #ff5e5e;
+		}
+
+		.footer-additional {
+			margin-top: 20px;
+			font-size: 14px;
+			color: #666;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Навігаційна панель -->
+	<nav class="navbar">
+		<div class="container">
+			<!-- Логотип і текст "EXODUS" -->
+			<div class="logo">
+				<img src="img/Exodus Landing Page.png" alt="Exodus Logo">
+				<span class="logo-text">EXODUS</span>
+			</div>
+			<ul class="nav-links">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Wallet</a></li>
+				<li><a href="#">Exchange</a></li>
+				<li><a href="#">Support</a></li>
+				<li><a href="#">Company</a></li>
+			</ul>
+			<button class="download-btn">Download</button>
+		</div>
+	</nav>
+
+	<!-- Секція Hero -->
+	<section class="hero">
+		<div class="container">
+			<h1>EXODUS CRYPTO WALLET APPLICATION</h1>
+			<p>Secure, manage & exchange cryptocurrency on the world's leading desktop, mobile and hardware crypto wallet.
+			</p>
+		</div>
+	</section>
+
+	<!-- Секція Why Choose -->
+	<section class="why-choose">
+		<h2>WHY YOU SHOULD CHOOSE EXODUS WALLET TODAY?</h2>
+		<div class="info-container">
+			<div class="info-box">
+				<h3>115+</h3>
+				<span class="subtitle">Cryptocurrency Assets</span>
+				<p class="description">Duis proin aliquat sed ultricies suscipit morbi ut. Cursus pulvinar consequat non
+					turpis nisl congue.</p>
+			</div>
+			<div class="info-box">
+				<h3>72</h3>
+				<span class="subtitle">Exchange 24/7 - In Seconds</span>
+				<p class="description">Sed pellentesque ultrices ultrices justo, nunc diam ut enim adipiscing. Dignissim
+					nulla malesuada mi ut vel turpis</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Футер -->
+	<footer>
+		<div class="container footer-content">
+			<!-- Логотип і текст "EXODUS" -->
+			<div class="footer-logo">
+				<img src="img/Exodus Landing Page.png" alt="Exodus Logo">
+				<span class="footer-logo-text">EXODUS</span>
+			</div>
+
+			<!-- Колонки з посиланнями -->
+			<div class="footer-columns">
+				<!-- Products -->
+				<div class="column">
+					<h4>PRODUCTS</h4>
+					<ul>
+						<li><a href="#">Volutpat eors</a></li>
+						<li><a href="#">Amet vitae</a></li>
+						<li><a href="#">Mauris habitant</a></li>
+						<li><a href="#">Sit faucibus</a></li>
+						<li><a href="#">Facilisis sed</a></li>
+						<li><a href="#">Nulla pallentesque</a></li>
+						<li><a href="#">Velit morbi</a></li>
+						<li><a href="#">Quisque laoreet</a></li>
+					</ul>
+				</div>
+
+				<!-- Support -->
+				<div class="column">
+					<h4>SUPPORT</h4>
+					<ul>
+						<li><a href="#">Turpis rutrum</a></li>
+						<li><a href="#">Purus Eget</a></li>
+						<li><a href="#">Id Gravida</a></li>
+						<li><a href="#">Dignissim Non</a></li>
+						<li><a href="#">Venenatis Curabitur</a></li>
+						<li><a href="#">Viverra Id</a></li>
+						<li><a href="#">Habitasse Cras</a></li>
+						<li><a href="#">Nunc Erat</a></li>
+					</ul>
+				</div>
+
+				<!-- Company -->
+				<div class="column">
+					<h4>COMPANY</h4>
+					<ul>
+						<li><a href="#">Volutpat eors</a></li>
+						<li><a href="#">Amet vitae</a></li>
+						<li><a href="#">Mauris habitant</a></li>
+						<li><a href="#">Sit faucibus</a></li>
+						<li><a href="#">Facilisis sed</a></li>
+						<li><a href="#">Nulla pallentesque</a></li>
+						<li><a href="#">Velit morbi</a></li>
+						<li><a href="#">Quisque laoreet</a></li>
+					</ul>
+				</div>
+
+				<!-- LEO SED -->
+				<div class="column">
+					<h4>LEO SED</h4>
+					<ul>
+						<li><a href="#">Turpis rutrum</a></li>
+						<li><a href="#">Purus Eget</a></li>
+						<li><a href="#">Id Gravida</a></li>
+						<li><a href="#">Dignissim Non</a></li>
+						<li><a href="#">Venenatis Curabitur</a></li>
+						<li><a href="#">Viverra Id</a></li>
+						<li><a href="#">Habitasse Cras</a></li>
+						<li><a href="#">Nunc Erat</a></li>
+					</ul>
+				</div>
+
+				<!-- SCELERISQUE -->
+				<div class="column">
+					<h4>SCELERISQUE</h4>
+					<ul>
+						<li><a href="#">Volutpat eors</a></li>
+						<li><a href="#">Amet vitae</a></li>
+						<li><a href="#">Mauris habitant</a></li>
+						<li><a href="#">Sit faucibus</a></li>
+						<li><a href="#">Facilisis sed</a></li>
+						<li><a href="#">Nulla pallentesque</a></li>
+						<li><a href="#">Velit morbi</a></li>
+						<li><a href="#">Quisque laoreet</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Додатковий текст -->
+			<div class="footer-additional">
+				<p>Copyright 2020</p>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
